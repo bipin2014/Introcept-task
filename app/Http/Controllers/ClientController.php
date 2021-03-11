@@ -16,31 +16,33 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $path=$this->check_file_exists_and_return_path();
-        $file = fopen($path, "r");
-        $all_data = array();
-        while ( ($data = fgetcsv($file, 200, ",")) !==FALSE ) {
-            $client=new Client();
+        $path = $this->check_file_exists_and_return_path();
+        $file = fopen($path, 'r');
+        $all_data = [];
+        while (($data = fgetcsv($file, 200, ',')) !== false) {
+            $client = new Client();
             array_push($all_data, $client->array_to_object_array($data));
         }
+
         return response()->json([
-            'data'=>$all_data
+            'data'=>$all_data,
         ]);
     }
 
-    function check_file_exists_and_return_path()
+    public function check_file_exists_and_return_path()
     {
-        $file_name='clients_data.csv';
+        $file_name = 'clients_data.csv';
         $exists = Storage::disk('local')->exists($file_name);
-        $path=Storage::path($file_name);
+        $path = Storage::path($file_name);
         //If file not exists create one
-        if (!$exists) {
+        if (! $exists) {
             $file = fopen($path, 'w');
-            $column=array('Name', 'Gender', 'Phone', 'Email', 'Address','Nationality','Dob','Education Background','Contact Mode');
-             // save the column headers
+            $column = ['Name', 'Gender', 'Phone', 'Email', 'Address', 'Nationality', 'Dob', 'Education Background', 'Contact Mode'];
+            // save the column headers
             fputcsv($file, $column);
             fclose($file);
         }
+
         return $path;
     }
 
@@ -52,16 +54,17 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-        //data is valid 
-        $path=$this->check_file_exists_and_return_path();
+        //data is valid
+        $path = $this->check_file_exists_and_return_path();
         //Store data to csv
-        $this->append_to_file($path,$request->validated());
+        $this->append_to_file($path, $request->validated());
+
         return response()->json([
             'message' => 'Data added sucessfull to csv file',
         ]);
     }
 
-    private function append_to_file($path,$dataarray)
+    private function append_to_file($path, $dataarray)
     {
         $file = fopen($path, 'a');
         fputcsv($file, $dataarray);
