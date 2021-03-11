@@ -34,7 +34,7 @@ class ClientTest extends TestCase
             "contact_mode"=>"phone"
         ]);
 
-        $response->assertOk()->assertJson(['message'=>"Data Added Sucessfullt to csv file"]);
+        $response->assertOk()->assertJson(['message'=>"Data added sucessfull to csv file"]);
     }
 
     public function test_post_clients_name_empty()

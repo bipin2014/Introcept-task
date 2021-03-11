@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -48,29 +49,14 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-        //Validate data
-
-        $validated = $request->validate([
-            'name' => 'required|min:3|max:50',
-            'gender' => 'required',
-            'phone' => 'required|digits:10',
-            'email' => 'required|email',
-            'address' => 'required|min:5',
-            'nationality' => 'required',
-            'dob' => 'required|date',
-            'education_background' => 'required',
-            'contact_mode' => 'required',
-        ]);
         //data is valid 
         $path=$this->check_file_exists_and_return_path();
         //Store data to csv
-        $client=new Client();
-        $dataarray=$client->array_object_to_array($request);
-        $this->append_to_file($path,$dataarray);
+        $this->append_to_file($path,$request->validated());
         return response()->json([
-            'message' => 'Data Added Sucessfullt to csv file',
+            'message' => 'Data added sucessfull to csv file',
         ]);
     }
 
