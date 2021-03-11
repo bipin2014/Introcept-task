@@ -28,7 +28,8 @@ class ClientController extends Controller
         ]);
     }
 
-    function check_file_exists_and_return_path(){
+    function check_file_exists_and_return_path()
+    {
         $file_name='clients_data.csv';
         $exists = Storage::disk('local')->exists($file_name);
         $path=Storage::path($file_name);
@@ -60,7 +61,8 @@ class ClientController extends Controller
         ]);
     }
 
-    private function append_to_file($path,$dataarray){
+    private function append_to_file($path,$dataarray)
+    {
         $file = fopen($path, 'a');
         fputcsv($file, $dataarray);
         fclose($file);
