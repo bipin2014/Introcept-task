@@ -6,10 +6,10 @@ RUN apt-get update -y && apt-get install -y libmcrypt-dev
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # RUN docker-php-ext-install pdo mbstring
 
-COPY code/composer.lock* code/composer.json* /var/www/
+COPY composer.lock composer.json /var/www/
 
-WORKDIR /app
-COPY . /app
+WORKDIR /var/www
+COPY . /var/www
 
 RUN composer install
 
