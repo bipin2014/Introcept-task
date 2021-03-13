@@ -37,9 +37,6 @@ class ClientController extends Controller
         //If file not exists create one
         if (! $exists) {
             $file = fopen($path, 'w');
-            $column = ['Name', 'Gender', 'Phone', 'Email', 'Address', 'Nationality', 'Dob', 'Education Background', 'Contact Mode'];
-            // save the column headers
-            fputcsv($file, $column);
             fclose($file);
         }
 
