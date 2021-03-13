@@ -19,11 +19,10 @@ const initialValues: Client = {
 interface IAddUser {
     closeModal: Function,
     mode: string,
-    reload: boolean
     setReload: Function
 }
 
-const AddClient = (props: IAddUser, { setReload: setRelaod = (f: Function) => f }: IAddUser) => {
+const AddClient = (props: IAddUser) => {
     const [errors, setErrors] = useState(initialValues);
     const [client, setClient] = useState<Client>(initialValues);
 
@@ -46,7 +45,9 @@ const AddClient = (props: IAddUser, { setReload: setRelaod = (f: Function) => f 
 
         if (validated) {
             addNewClient(client).then(res => {
-                setRelaod(!props.reload);
+                console.log(res);
+                
+                props.setReload();
 
             }).catch(err => {
                 console.log(err);
@@ -71,10 +72,10 @@ const AddClient = (props: IAddUser, { setReload: setRelaod = (f: Function) => f 
     };
     return (
         <div className="edit-client dialog-content">
-            <div className="dialog-content-area auto-scroll full-width ma-sm pa-sm" style={{ maxHeight: '70vh' }}>
-                <form onSubmit={handelFormSubmit} className="full-width">
-                    <div className="form-area my-lg">
-
+            <div className="dialog-content-area auto-scroll" >
+                <form onSubmit={handelFormSubmit}>
+                    <div className="full-width">
+                    <div className="form-area my-lg auto-scroll pa-sm" style={{ maxHeight: '60vh' }}>
                         <div className="form-group mb-sm">
                             <label className={'bold text-primary'}>Name</label>
                             <input
@@ -241,6 +242,7 @@ const AddClient = (props: IAddUser, { setReload: setRelaod = (f: Function) => f 
 
                     </div>
                     <button className="btn primary full-width" type={'submit'}>Create Client</button>
+                    </div>
                 </form>
             </div>
         </div>

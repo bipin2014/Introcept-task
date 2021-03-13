@@ -3,6 +3,7 @@ import Modal from '../../../common/modal';
 import Confirmation from '../../../common/modal/Confirmation';
 import ListTable from '../../../common/Table';
 import AddClient from './components/AddClient';
+import NavClient from './components/NavClient';
 import { getAllClients } from './services/ClientServices';
 
 const ClientLayout: React.FC = () => {
@@ -10,7 +11,6 @@ const ClientLayout: React.FC = () => {
     const [modalMode, setModalMode] = useState('add');
     const [reload, setReload] = useState(false)
     const [showModal, setShowModal] = useState(false);
-    const [showConfirmation, setShowConfirmation] = useState(false);
     // useEffect(() => {
     //     loadAllClients();
     // }, [])
@@ -30,10 +30,6 @@ const ClientLayout: React.FC = () => {
     const addAction = () => {
         setModalMode('add');
         setShowModal(true);
-    }
-
-    const deleteConfirmation = async () => {
-        setShowConfirmation(false);
     }
 
     const columns = [
@@ -91,38 +87,29 @@ const ClientLayout: React.FC = () => {
     ]
 
     return (
-        <section className="wrapper issues full-height full-width flex column py-md">
-            <header className={'flex justify-between items-center mb-md'}>
-                <div className="title-sm bold text-primary">Clients</div>
-                <button className="btn primary" onClick={addAction}>Add Client</button>
-            </header>
-            <div className="table-area pt-md flex-1">
-                <ListTable
-                    columns={columns}
-                    rows={clients}
-                    paginate={10}
-                />
-            </div>
-            {
-                modalMode === 'add' ?
+        <>
+            <NavClient />
+            <section className="wrapper issues full-height full-width flex column py-md">
+
+                <header className={'flex justify-end items-center mb-md'}>
+                    <button className="btn primary" onClick={addAction}>Add Client</button>
+                </header>
+                <div className="table-area pt-md flex-1">
+                    <ListTable
+                        columns={columns}
+                        rows={clients}
+                        paginate={10}
+                    />
+                </div>
+                {
+                    modalMode === 'add' &&
                     <Modal show={showModal} title={'Add Client'}
                         closeModal={() => setShowModal(false)}>
-                        <AddClient closeModal={() => setShowModal(false)} mode={modalMode} reload={reload} setReload={setReload} />
-                    </Modal> :
-                    <Modal show={showModal} title={'Edit Client'}
-                        closeModal={() => setShowModal(false)}>
-                        {/* <EditInstitute
-                            editInstitute={editInstitute}
-                            editObj={editUserObj}
-                            closeModal={() => setShowModal(false)}
-                            mode={modalMode}
-                        /> */}
+                        <AddClient closeModal={() => setShowModal(false)} mode={modalMode} setReload={() => setReload(!reload)} />
                     </Modal>
-            }
-            <Confirmation title="Confirm" content="Are you sure you want to delete this item?" show={showConfirmation}
-                confirm={deleteConfirmation}
-                closeModal={() => setShowConfirmation(false)} />
-        </section>
+                }
+            </section>
+        </>
     );
 };
 

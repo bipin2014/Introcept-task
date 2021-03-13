@@ -23,6 +23,7 @@ export default {
     address: {
         required: true,
         label: "Address",
+        minValue: 5,
     },
     nationality: {
         required: true,
