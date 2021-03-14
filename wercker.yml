@@ -37,4 +37,4 @@ build:
         code: php artisan serve >> /dev/null &
     - script:
         name: PHPUnit integration tests
-        code: phpunit --configuration phpunit.xml
+        code: php artisan test
