@@ -34,7 +34,7 @@ build:
         code: composer install --no-interaction
     - script:
         name: Serve application
-        code: php artisan serve >> /dev/null &
+        code: php artisan serve
     - script:
         name: PHPUnit integration tests
         code: php artisan test
