@@ -21,6 +21,8 @@ const ClientLayout: React.FC = () => {
 
     const loadAllClients = () => {
         getAllClients().then(res => {
+            console.log(res.data.data);
+            
             setClients(res.data.data.reverse())
         }).catch(err => {
             console.log(err);

@@ -8,8 +8,8 @@ const ListTable = (props: any) => {
         setColumns(props.columns);
         setRows(props.rows);
     }, [props]);
-    
-    
+
+
     const optionValue = (st: any, val: any, key: any) => {
         try {
             if (key && key.length === 4) {
@@ -115,8 +115,8 @@ const ListTable = (props: any) => {
                                                     className={`${columnHeader.boxed ? rowData[columnHeader.field] : ''} pa-xs`}>
                                                     {columnHeader.date ?
                                                         moment(new Date(rowData[columnHeader.field])).format('YYYY-MM-DD') :
-                                                            columnHeader.optionsArray ? optionValue(columnHeader.sliced, rowData, columnHeader.field)
-                                                                    : sliced(columnHeader.sliced, rowData, columnHeader.field)}
+                                                        columnHeader.optionsArray ? optionValue(columnHeader.sliced, rowData, columnHeader.field)
+                                                            : sliced(columnHeader.sliced, rowData, columnHeader.field)}
                                                 </span>
                                             </div>
                                         ))
@@ -153,11 +153,14 @@ const ListTable = (props: any) => {
             }
             {
                 props.paginate ?
-                    <div className={'pagination-area pt-md flex items-center justify-end'}>
-                        <label>Page {pageNumber} of {totalPages}</label>
-                        <div className="button-area flex items-center">
-                            <i className="material-icons" onClick={() => paginate(-1)}>chevron_left</i>
-                            <i className="material-icons" onClick={() => paginate(1)}>chevron_right</i>
+                    <div className={'pagination-area pt-md flex items-center justify-between'}>
+                        <label>Showing {props.paginate} items per page </label>
+                        <div className={'flex'}>
+                            <label>Page {pageNumber} of {totalPages}</label>
+                            <div className="button-area flex items-center">
+                                <i className="material-icons" onClick={() => paginate(-1)}>chevron_left</i>
+                                <i className="material-icons" onClick={() => paginate(1)}>chevron_right</i>
+                            </div>
                         </div>
                     </div> : ''
             }

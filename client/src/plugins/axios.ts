@@ -1,4 +1,4 @@
-import axios from '../utils/customHooks/interceptor';
+import axios from 'axios';
 
 export function PostRequest(url: string, data: any, config: any) {
     return axios.post(url, data, config);
