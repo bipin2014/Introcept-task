@@ -41,17 +41,11 @@ const AddClient = (props: IAddUser) => {
         let errorMsgs: any = ValidateForm(client, ClientRules);
         setErrors({ ...errorMsgs });
         let validated = Object.values(errorMsgs).join('').length === 0;
-        console.log(errorMsgs);
-
         if (validated) {
             addNewClient(client).then(res => {
-                console.log(res);
-                
                 props.setReload();
-
             }).catch(err => {
                 console.log(err);
-
             });
             // dispatch(actions.adminAddInstitute(institute));
             props.closeModal()

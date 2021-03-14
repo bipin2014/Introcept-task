@@ -11,9 +11,6 @@ const ClientLayout: React.FC = () => {
     const [modalMode, setModalMode] = useState('add');
     const [reload, setReload] = useState(false)
     const [showModal, setShowModal] = useState(false);
-    // useEffect(() => {
-    //     loadAllClients();
-    // }, [])
 
     useEffect(() => {
         loadAllClients();
@@ -21,8 +18,6 @@ const ClientLayout: React.FC = () => {
 
     const loadAllClients = () => {
         getAllClients().then(res => {
-            console.log(res.data.data);
-            
             setClients(res.data.data.reverse())
         }).catch(err => {
             console.log(err);
