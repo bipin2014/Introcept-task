@@ -14,7 +14,7 @@ dev:
         name: install dependencies
         code: composer install --no-interaction
     - internal/watch:
-        code: php artisan serve
+        code: php -S 0.0.0.0:8080
         reload: true
 
 build:
@@ -34,7 +34,7 @@ build:
         code: composer install --no-interaction
     - script:
         name: Serve application
-        code: php artisan serve
+        code: php -S localhost:8080 >> /dev/null &
     - script:
         name: PHPUnit integration tests
-        code: php artisan test
+        code: phpunit --configuration phpunit.xml
