@@ -1,0 +1,13 @@
+# The container definition we want to use for developing our app
+box:
+  id: node:latest
+  ports:
+    - "8080"
+
+# Defining the dev pipeline
+dev:
+  steps:
+    - npm-install
+    - internal/watch:
+        code: npm start
+        reload: true

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+//colors
+$primary-color: #68ADE0;
+$dark-primary: #042d47;
+$secondary-color: #3e3e3e;
+$light-color: #ffffff;
+
+$success-color: #4caf50;
+$danger-color: #f44336;
+$info-color: #2196f3;
+$warning-color: #ff9800;
+
+$text-color: #2e2e2e;
+//font-sizes
+$title-size: 2.4rem;
+$accent-size: 1.6rem;
+
+//font-family
+$title-font: 'Open Sans', sans-serif;
+$accent-font: 'Open Sans','sans-serif';
+
+//sizes
+$xs: 4px;
+$sm: 8px;
+$md: 16px;
+$lg: 24px;
+$xl: 32px;
+
+//layouting
+$wrapper-val:2.5vw;
+//for screen
+$xs-c : 550px ;
+$sm-c: 800px;
+$md-c: 1600px;
+$lg-c: 2400px;
+$xl-c: 3200px;
