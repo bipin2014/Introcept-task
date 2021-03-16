@@ -2,6 +2,49 @@
 
 This is a laravel project for recording a client informations like name, gender, date of birth and other details in a csv file and displaying all of them. I will break down the steps i have performed and the technology used below:
 
+## Run this application on new device we can just clone this repository and use it easily.
+Steps Involved are:
+
+### Step 1:
+```bash
+git clone https://github.com/bipin2014/Introcept-task.git
+```
+- This command will download all the files, branch of server to local system
+
+### Step 2: On the rooy of project run:
+```bash
+composer install
+```
+- This will install all the dependency or packages required for this application used in `composer.json`.
+
+### Step 3: 
+```bash
+php artisan serve
+```
+- This will run application on `http://localhost:8000/`
+
+### Step 4:
+```bash
+cd clients
+npm install or yarn install or yarn
+```
+- This command will change directory to clients and install dependency from `package.json`
+
+### Step 5:
+You need to create .env file and add 
+```bash
+REACT_APP_API_BASE_URL = http://localhost:8000/api
+```
+
+### Step 6:
+```bash
+npm start or yarn start
+```
+- This will run frontend of the app in `http://localhost:3000/`
+
+
+## Task Performed in Laravel
+
 1. At first new latest laravel project is installed from `composer`.
 2. Then i have started to plan about the routes of the application, cleared the unused and default routes in `routes/web.php`.
 3. Created a `Client` model and `ClientController` resource class.
@@ -76,6 +119,55 @@ php artisan test
 ```
 
 1. So i created a test class called `ClientTest.php` under Feature folder.
+- In this class i have tested both api endpoints
+  * For GET method check if the status code is 200.
+  * For POST method different test is created like sucess,and different condition of failure.
+
+## Code Formating
+As recommended on the task i have used a PSR-2 format for coding and have edited the `styleci.yml` file. Laravel in default use laravel preset which is mostly similar to PSR-2 format.
+```bash
+preset: psr2
+```
+
+## Adding file to Git
+Git is a versioning tool. It can be very usefull for software development because software are upgraded frequently and its hard to manually keep record of software versions.
+- We can use Git with tools like github, gitlab, bitbucket and save them so that if anything happens to our system then we can take running system from their.
+So the steps involved in git are:
+### Step 1:
+```bash
+git init
+```
+- This will initialize git in folder or repository, and generate .git folder which keeps tracks of all the activities like file  changes, staged the changes etc.
+
+### Step 2:
+```bash
+git add .
+```
+- This will add all the files to the git or it staged all the changes.
+- We can also specify the file names if we want to add specific files.
+
+### Step 3:
+```bash
+git commit -m "Initail Commit"
+```
+- This will commit all the changes or save all the changes to a local repository.
+
+### Step 4:
+```bash
+git remote add origin https://github.com/bipin2014/Introcept-task.git
+```
+- This will specify where the files will be saved on the internet, we can use https link or ssh but for ssh we need to add public key of our pc in the platform like github, gitlab
+
+### Step 5:
+```bash
+git push origin master
+```
+- This command will upload all the commits to the server so other can also access them easily.
+
+
+## Task Performed in React
+
+
 
 
 
