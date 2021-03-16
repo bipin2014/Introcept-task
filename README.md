@@ -165,7 +165,57 @@ git push origin master
 - This command will upload all the commits to the server so other can also access them easily.
 
 
-## Task Performed in React
+## Task Performed in React (frontend)
+
+For the frontend i have used frontend with typescript. 
+It gives us many packages or dependency on installation and others can be added.
+```bash
+        "axios": "^0.21.1",
+        "moment": "^2.29.1",
+        "react": "^17.0.1",
+        "node-sass": "^4.0.0",
+        "react-router-dom": "^5.2.0",
+        "sass-loader": "^10.1.1",
+        "typescript": "^4.1.2",
+        "ts-jest": "25.4.0",
+```
+
+## axios
+Axios is the library used to make a http request using GET,POST,PUT, DELETE methods from frontend to backend api.
+alternate of this if js fetch but this librabry can make request fast and easy to use. I have used axios to get all clients from backend and add client.
+
+## moment
+Moment is a js time formating framework where we can firmat time as we like. I have used this framework to format the dob.
+
+## node-sass
+This is a library that allows you to natively compile .scss files to css at incredible speed and automatically via a connect middleware.
+
+## react-router-dom
+Since react is a single page application it doesnot play with routes by default. SO to handle url and routes we have to use this librabry.
+
+## sass-loader
+This is also another librabry which helps to load a Sass/SCSS file and compiles it to CSS. node-sass should be use with it.
+
+## typescript
+As react use js as default language and i have built this app using typescript we need this package.
+
+## ts-jest:
+Jest is a javascript testing library it helps to test node, react, angular, vue, babel, typescript.
+
+# Implementation
+- I have built a table with pagination to show info of the client 
+- Develop a modal to add new clinet.
+- Write core scss.
+
+# Wercker
+It is a Docker-based continuous delivery platform that helps software developers build and deploy their applications.
+i have added `wercker.yml` file in root of the project and when ever it is pushed to github.
+- It will automatically build the application
+- run unit test 
+- host the application to heroku, i have connected heroku and wercker link is <a href="https://introcept-task100.herokuapp.com/" target="_blank">`https://introcept-task100.herokuapp.com/`</a> . 
+We can create differnt stages where different operation can be performed like i have made `dev`, `build`, `deploy`, and differnt stages do differnt operation.
+
+
 
 
 
