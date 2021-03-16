@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '../../../common/modal';
-import Confirmation from '../../../common/modal/Confirmation';
 import ListTable from '../../../common/Table';
 import AddClient from './components/AddClient';
 import NavClient from './components/NavClient';
